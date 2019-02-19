@@ -1,7 +1,7 @@
 package pl.home.mate.textClass.service;
 
-import pl.home.mate.ErrorMessage.ErrorMessage;
 import pl.home.mate.textClass.UncheckedText;
+import pl.home.mate.textException.EmptyLineException;
 import pl.home.mate.textException.SplitTextException;
 import pl.home.mate.textFormatPatterns.preparedPatternsInterfaces.TextPatternDelimiter;
 
@@ -9,43 +9,41 @@ import pl.home.mate.textFormatPatterns.preparedPatternsInterfaces.TextPatternDel
 import java.util.Arrays;
 import java.util.List;
 
-public class TextSplit extends UncheckedText implements pl.home.mate.textClass.textFormatIntefraces.TextSplit{
+public class TextSplit extends UncheckedText implements pl.home.mate.textClass.textIntefraces.TextSplit{
 
 
 
-    private ErrorMessage errorMessage = new ErrorMessage();
+
     private String oneLine;
-    private TextPatternDelimiter textPatternItemsExtend;
+    private TextPatternDelimiter textPatternDelimiter;
 
     public TextSplit(String textToCheck) {
         super(textToCheck);
     }
 
     @Override
-    public List<String> splitText(TextPatternDelimiter textPatternItemsExtend) throws SplitTextException {
-        this.textPatternItemsExtend = textPatternItemsExtend;
+    public List<String> splitText(TextPatternDelimiter textPatternDelimiter) {
+        this.textPatternDelimiter = textPatternDelimiter;
         oneLine = super.getTextToCheck();
         this.splitTextTry(oneLine);
         return Arrays.asList(oneLine.split(","));
     }
 
-    private void splitTextTry(String oneLine) throws SplitTextException {
-        int expectedNumberOfItemsInLine = Arrays.asList(oneLine.split(",")).size();
-            if (expectedNumberOfItemsInLine==0){
-               this.throwSplitTextException("Line is empty");
-            } else if  (expectedNumberOfItemsInLine!=this.textPatternItemsExtend.countDelimiter()) {
-                this.throwSplitTextException("To Many items or delimiters in line  : "+oneLine+" , expect  : "
-                        + this.textPatternItemsExtend.countDelimiter()+" delimiters (\",\")");
+    private void splitTextTry(String oneLine)  {
+        try {
+            if (checkNumbersOfDelimiters() == 0) {
+                throw new EmptyLineException("Line is empty");
+            } else if (checkNumbersOfDelimiters() != this.textPatternDelimiter.countDelimiter()) {
+                throw new SplitTextException("To Many items or delimiters in line  : " + oneLine + " , expect  : "
+                        + this.textPatternDelimiter.countDelimiter() + " delimiters (\",\")");
             }
+        }catch (EmptyLineException | SplitTextException e){
+            System.out.println(e.getMessage());
         }
-
-    private void throwSplitTextException(String errorMessageInfo) throws SplitTextException {
-        errorMessage.setError(true);
-        errorMessage.setErrorMessage(errorMessageInfo);
-        throw new SplitTextException();
     }
 
-    public ErrorMessage getErrorMessage() {
-        return errorMessage;
+
+    private Integer checkNumbersOfDelimiters(){
+        return Arrays.asList(oneLine.split(",")).size();
     }
 }

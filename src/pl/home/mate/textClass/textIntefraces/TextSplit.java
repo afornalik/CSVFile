@@ -1,7 +1,6 @@
-package pl.home.mate.textClass.textFormatIntefraces;
+package pl.home.mate.textClass.textIntefraces;
 
 import pl.home.mate.textException.SplitTextException;
-import pl.home.mate.textFormatPatterns.TextPatternItemsExtend;
 import pl.home.mate.textFormatPatterns.preparedPatternsInterfaces.TextPatternDelimiter;
 
 import java.util.List;

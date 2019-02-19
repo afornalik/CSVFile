@@ -1,6 +1,6 @@
 package pl.home.mate.textClass;
 
-import pl.home.mate.textClass.textFormatIntefraces.CheckDataFormat;
+import pl.home.mate.textClass.textIntefraces.CheckDataFormat;
 
 
 public class UncheckedText extends Text implements CheckDataFormat {
@@ -14,7 +14,7 @@ public class UncheckedText extends Text implements CheckDataFormat {
 
 
     @Override
-    public boolean checkFormat() throws Exception {
+    public boolean checkFormat()  {
 
         return false;
     }
