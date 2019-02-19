@@ -1,6 +1,6 @@
-package pl.home.mate.fileIntefraceImplementation.fileInterfaceImplementationSuperClass;
+package pl.home.mate.fileInterfaceImplementation.fileInterfaceImplementationSuperClass;
 
-import pl.home.mate.fileIntefraceImplementation.*;
+import pl.home.mate.fileInterfaceImplementation.*;
 import pl.home.mate.fileInterfaces.*;
 import pl.home.mate.fileUtilities.FileInfoExtends;
 

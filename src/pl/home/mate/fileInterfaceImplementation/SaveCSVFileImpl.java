@@ -1,8 +1,8 @@
-package pl.home.mate.fileIntefraceImplementation;
+package pl.home.mate.fileInterfaceImplementation;
 
 import pl.home.mate.fileInterfaces.SaveCSVFile;
 import pl.home.mate.fileUtilities.FileInfoExtends;
-import pl.home.mate.textClass.CheckedText;
+import pl.home.mate.textClass.checkText.CheckedText;
 
 public class SaveCSVFileImpl implements SaveCSVFile {
 
