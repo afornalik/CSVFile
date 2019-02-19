@@ -1,8 +1,8 @@
-package pl.home.mate.fileIntefraceImplementation;
+package pl.home.mate.fileInterfaceImplementation;
 
 
 
-import pl.home.mate.ErrorMessage.ErrorMessage;
+import pl.home.mate.errorMessage.ErrorMessage;
 import pl.home.mate.fileInterfaces.LoadCSVFile;
 import pl.home.mate.fileUtilities.FileInfoExtends;
 
@@ -51,9 +51,6 @@ public class LoadCSVFileImpl implements LoadCSVFile {
         }
     }
 
-    public ErrorMessage getErrorMessage() {
-        return errorMessage;
-    }
 
     private void setErrorMessageLoadLine() {
         this.errorMessage.setErrorMessage(("Can't load text from file : "+ fileInfo.getFileURL()));

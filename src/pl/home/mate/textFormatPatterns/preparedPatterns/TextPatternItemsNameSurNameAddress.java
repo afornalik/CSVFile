@@ -4,10 +4,15 @@ import com.sun.istack.internal.NotNull;
 
 import pl.home.mate.textFormatPatterns.TextPatternItems;
 import pl.home.mate.textFormatPatterns.TextPatternItemsExtend;
+import pl.home.mate.textFormatPatterns.preparedPatternsInterfaces.TextPatternAcceptedAttributeList;
 import pl.home.mate.textFormatPatterns.preparedPatternsInterfaces.TextPatternDelimiter;
 import pl.home.mate.textFormatPatterns.preparedPatternsInterfaces.TextPatternReceivingItems;
+import pl.home.mate.textFormatPatterns.preparedPatternsInterfaces.TextPatternType.TextPatternAcceptedAttributeType;
 
-public class TextPatternItemsNameSurNameAddress extends TextPatternItemsExtend implements TextPatternDelimiter, TextPatternReceivingItems {
+import java.util.ArrayList;
+import java.util.List;
+
+public class TextPatternItemsNameSurNameAddress extends TextPatternItemsExtend implements TextPatternDelimiter, TextPatternReceivingItems, TextPatternAcceptedAttributeList {
 
 
     private TextPatternItems<String> name;
@@ -27,6 +32,7 @@ public class TextPatternItemsNameSurNameAddress extends TextPatternItemsExtend i
        super();
     }
 
+
     @Override
     public TextPatternItems<String>[] receiveItems() {
         TextPatternItems<String>[] receiveItems = new TextPatternItems[3];
@@ -41,6 +47,16 @@ public class TextPatternItemsNameSurNameAddress extends TextPatternItemsExtend i
         return 3;
     }
 
+
+    @Override
+    public List<TextPatternAcceptedAttributeType> receiveListOfAttribute() {
+        List<TextPatternAcceptedAttributeType> listOfArgumentsType = new ArrayList<>();
+        listOfArgumentsType.add(TextPatternAcceptedAttributeType.STRING);
+        listOfArgumentsType.add(TextPatternAcceptedAttributeType.STRING);
+        listOfArgumentsType.add(TextPatternAcceptedAttributeType.STRING);
+        return listOfArgumentsType;
+    }
+
     @Override
     public String toString() {
         return "TextPatternItemsNameSurNameAddress{" +
@@ -49,6 +65,7 @@ public class TextPatternItemsNameSurNameAddress extends TextPatternItemsExtend i
                 ", address=" + address +
                 '}';
     }
+
 
 
 }
