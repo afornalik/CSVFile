@@ -1,4 +1,4 @@
-package pl.home.mate.ErrorMessage;
+package pl.home.mate.errorMessage;
 
 public class ErrorMessage {
 

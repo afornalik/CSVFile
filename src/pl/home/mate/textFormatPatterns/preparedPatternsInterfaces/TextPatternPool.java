@@ -1,6 +1,6 @@
 package pl.home.mate.textFormatPatterns.preparedPatternsInterfaces;
 
-public interface TextPatternDelimiter {
+public interface TextPatternPool {
 
-    int countDelimiter();
+    int countPool();
 }
