@@ -5,11 +5,10 @@ import pl.home.mate.fileUtilities.FileInfoExtends;
 import pl.home.mate.textClass.checkText.CheckedText;
 import pl.home.mate.textClass.service.TextSplit;
 import pl.home.mate.textClass.textIntefraces.CheckDataFormat;
-import pl.home.mate.textFormatPatterns.preparedPatterns.TextPatternItems_SSI;
-import pl.home.mate.textFormatPatterns.preparedPatterns.TextPatternItems_SSS;
-import pl.home.mate.textFormatPatterns.preparedPatternsInterfaces.TextPatternPool;
 
-
+import pl.home.mate.textFormatPatterns.TextPatternItemsExtend;
+import pl.home.mate.textFormatPatterns.preparedPatterns.TextPatternItemsNameSurNameAddress;
+import pl.home.mate.textFormatPatterns.preparedPatternsInterfaces.TextPatternDelimiter;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -49,6 +48,7 @@ public class Main {
                 .collect(Collectors.toList())
                 .forEach(s -> System.out.println(s.toUpperCase()));
 
+
         List<String> splitedOneLine = textSplit.splitText(textPatternPool);
 
         TextPatternPool textPatternPool1 = new TextPatternItems_SSS();
@@ -58,9 +58,12 @@ public class Main {
         CheckDataFormat checkDataFormat = new CheckedText(textSplit.splitText(textPatternPool), ((TextPatternItems_SSS) textPatternPool).receiveListOfAttribute());
         CheckDataFormat checkDataFormat2 = new CheckedText(textSplit.splitText(textPatternPool), ((TextPatternItems_SSI) textPatternPool2).receiveListOfAttribute());
 
+        List<String> splitedOneLine = textSplit.splitText(textPatternDelimiter);
+
 
         System.out.println(checkDataFormat.checkFormat());
         System.out.println(checkDataFormat2.checkFormat());
+
 
         String t ="";
     }
