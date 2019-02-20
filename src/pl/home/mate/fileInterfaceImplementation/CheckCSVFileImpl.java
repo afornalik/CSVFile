@@ -1,4 +1,4 @@
-package pl.home.mate.fileIntefraceImplementation;
+package pl.home.mate.fileInterfaceImplementation;
 
 
 import pl.home.mate.errorMessage.ErrorMessage;

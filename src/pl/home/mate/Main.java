@@ -1,6 +1,6 @@
 package pl.home.mate;
 
-import pl.home.mate.fileIntefraceImplementation.fileInterfaceImplementationSuperClass.AllFunctionCSVFile;
+import pl.home.mate.fileInterfaceImplementation.fileInterfaceImplementationSuperClass.AllFunctionCSVFile;
 import pl.home.mate.fileUtilities.FileInfoExtends;
 import pl.home.mate.textClass.checkText.CheckedText;
 import pl.home.mate.textClass.service.TextSplit;
@@ -8,6 +8,7 @@ import pl.home.mate.textClass.textIntefraces.CheckDataFormat;
 import pl.home.mate.textFormatPatterns.preparedPatterns.TextPatternItems_SSI;
 import pl.home.mate.textFormatPatterns.preparedPatterns.TextPatternItems_SSS;
 import pl.home.mate.textFormatPatterns.preparedPatternsInterfaces.TextPatternPool;
+
 
 
 import java.util.List;
@@ -44,7 +45,7 @@ public class Main {
         textSplit.splitText(textPatternPool).forEach(s -> System.out.println(s));
         textSplit.splitText(textPatternPool)
                 .stream()
-                .filter(s -> s.contains("orna"))
+                .filter(s -> s.contains("am"))
                 .collect(Collectors.toList())
                 .forEach(s -> System.out.println(s.toUpperCase()));
 
@@ -60,6 +61,7 @@ public class Main {
 
         System.out.println(checkDataFormat.checkFormat());
         System.out.println(checkDataFormat2.checkFormat());
+
         String t ="";
     }
 }
