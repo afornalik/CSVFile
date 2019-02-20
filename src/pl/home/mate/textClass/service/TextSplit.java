@@ -1,9 +1,8 @@
 package pl.home.mate.textClass.service;
 
 import pl.home.mate.textClass.UncheckedText;
-import pl.home.mate.textException.EmptyLineException;
 import pl.home.mate.textException.SplitTextException;
-import pl.home.mate.textFormatPatterns.preparedPatternsInterfaces.TextPatternDelimiter;
+import pl.home.mate.textFormatPatterns.preparedPatternsInterfaces.TextPatternPool;
 
 
 import java.util.Arrays;
@@ -15,15 +14,15 @@ public class TextSplit extends UncheckedText implements pl.home.mate.textClass.t
 
 
     private String oneLine;
-    private TextPatternDelimiter textPatternDelimiter;
+    private TextPatternPool textPatternPool;
 
     public TextSplit(String textToCheck) {
         super(textToCheck);
     }
 
     @Override
-    public List<String> splitText(TextPatternDelimiter textPatternDelimiter) {
-        this.textPatternDelimiter = textPatternDelimiter;
+    public List<String> splitText(TextPatternPool textPatternPool) {
+        this.textPatternPool = textPatternPool;
         oneLine = super.getTextToCheck();
         this.splitTextTry(oneLine);
         return Arrays.asList(oneLine.split(","));
@@ -31,19 +30,19 @@ public class TextSplit extends UncheckedText implements pl.home.mate.textClass.t
 
     private void splitTextTry(String oneLine)  {
         try {
-            if (checkNumbersOfDelimiters() == 0) {
-                throw new EmptyLineException("Line is empty");
-            } else if (checkNumbersOfDelimiters() != this.textPatternDelimiter.countDelimiter()) {
-                throw new SplitTextException("To Many items or delimiters in line  : " + oneLine + " , expect  : "
-                        + this.textPatternDelimiter.countDelimiter() + " delimiters (\",\")");
+            if (checkNumbersOfPools() == 0) {
+                throw new SplitTextException("Line is empty");
+            } else if (checkNumbersOfPools() != this.textPatternPool.countPool()) {
+                throw new SplitTextException("To Many items or Pools in line  : " + oneLine + " , expect  : "
+                        + this.textPatternPool.countPool() + " Pools (\",\")");
             }
-        }catch (EmptyLineException | SplitTextException e){
+        }catch ( SplitTextException e){
             System.out.println(e.getMessage());
         }
     }
 
 
-    private Integer checkNumbersOfDelimiters(){
+    private Integer checkNumbersOfPools(){
         return Arrays.asList(oneLine.split(",")).size();
     }
 }

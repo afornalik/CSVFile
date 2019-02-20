@@ -5,46 +5,31 @@ import com.sun.istack.internal.NotNull;
 import pl.home.mate.textFormatPatterns.TextPatternItems;
 import pl.home.mate.textFormatPatterns.TextPatternItemsExtend;
 import pl.home.mate.textFormatPatterns.preparedPatternsInterfaces.TextPatternAcceptedAttributeList;
-import pl.home.mate.textFormatPatterns.preparedPatternsInterfaces.TextPatternDelimiter;
+import pl.home.mate.textFormatPatterns.preparedPatternsInterfaces.TextPatternPool;
 import pl.home.mate.textFormatPatterns.preparedPatternsInterfaces.TextPatternReceivingItems;
 import pl.home.mate.textFormatPatterns.preparedPatternsInterfaces.TextPatternType.TextPatternAcceptedAttributeType;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class TextPatternItemsNameSurNameAddress extends TextPatternItemsExtend implements TextPatternDelimiter, TextPatternReceivingItems, TextPatternAcceptedAttributeList {
+public class TextPatternItems_SSS extends TextPatternItemsExtend implements TextPatternPool, TextPatternReceivingItems, TextPatternAcceptedAttributeList {
 
+    private final int AMOUNT_OF_POOL= 3;
 
-    private TextPatternItems<String> name;
-    private TextPatternItems<String> surName;
-    private TextPatternItems<String> address;
+    private TextPatternItems<String>[] pool = new TextPatternItems[AMOUNT_OF_POOL];
 
-
-    public TextPatternItemsNameSurNameAddress(@NotNull String name, @NotNull String surName, @NotNull String address) {
-        super();
-        this.name.setTextItem(name);
-        this.surName.setTextItem(surName);
-        this.address.setTextItem(address);
-
-       }
-
-    public TextPatternItemsNameSurNameAddress() {
+    public TextPatternItems_SSS() {
        super();
     }
 
-
     @Override
     public TextPatternItems<String>[] receiveItems() {
-        TextPatternItems<String>[] receiveItems = new TextPatternItems[3];
-        receiveItems[0] = name;
-        receiveItems[1] = surName;
-        receiveItems[2] = address;
-        return receiveItems;
+        return pool;
     }
 
     @Override
-    public int countDelimiter() {
-        return 3;
+    public int countPool() {
+        return this.AMOUNT_OF_POOL;
     }
 
 
@@ -59,10 +44,10 @@ public class TextPatternItemsNameSurNameAddress extends TextPatternItemsExtend i
 
     @Override
     public String toString() {
-        return "TextPatternItemsNameSurNameAddress{" +
-                "name=" + name +
-                ", surName=" + surName +
-                ", address=" + address +
+        return "TextPatternItems_SSS{" +
+                "pool1 =" + this.pool[0] +
+                ", pool2 =" + this.pool[1] +
+                ", address=" + this.pool[2] +
                 '}';
     }
 

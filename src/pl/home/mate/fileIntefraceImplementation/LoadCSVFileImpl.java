@@ -2,7 +2,7 @@ package pl.home.mate.fileIntefraceImplementation;
 
 
 
-import pl.home.mate.ErrorMessage.ErrorMessage;
+import pl.home.mate.errorMessage.ErrorMessage;
 import pl.home.mate.fileInterfaces.LoadCSVFile;
 import pl.home.mate.fileUtilities.FileInfoExtends;
 

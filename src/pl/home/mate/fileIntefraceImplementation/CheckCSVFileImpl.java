@@ -1,7 +1,7 @@
 package pl.home.mate.fileIntefraceImplementation;
 
 
-import pl.home.mate.ErrorMessage.ErrorMessage;
+import pl.home.mate.errorMessage.ErrorMessage;
 import pl.home.mate.fileInterfaces.CheckCSVFile;
 import pl.home.mate.fileUtilities.FileInfoExtends;
 
